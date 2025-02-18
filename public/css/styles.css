@@ -1024,3 +1024,12 @@ body {
     top: 45px;
     left: -10px;
 }
+
+.title-content::after {
+    content: "";
+    width: 5px;
+    display: inline-block;
+    height: 40px;
+    background-color: rgb(134, 21, 21);
+    position: absolute;
+}

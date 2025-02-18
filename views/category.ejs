@@ -19,14 +19,26 @@
 <body>
     <main>
         <%- include('partials/header') %>
-        <div class="content">
+        <!-- <div class="content">
             <div class="title-content" >
                 <h2>PHÁP LUẬT</h2>
                 <h3>Chuyện pháp đình</h3>
                 <h3>Tư Vấn</h3>
                 <h3>Pháp Lý</h3>
             </div>
+        </div> -->
+
+        <div class="content">
+            <div class="title-content">
+                <h2><%= theLoai[0] ? theLoai[0].Tentheloai : '' %></h2>
+                <% categories.forEach((category, index) => { %>
+                    <% if (index < 3) { %> <!-- Chỉ hiển thị 3 danh mục đầu tiên -->
+                        <h3><%= category.TenDanhMuc %></h3>
+                    <% } %>
+                <% }); %>
+            </div>
         </div>
+        
         <!-- <div>
             <h2>Tin tức mới nhất</h2>
             <% news.forEach(function(item) { %>
@@ -92,15 +104,23 @@
                     <!-- header-middle-->
                     <div class="header-middle">
                         <div class="middle-tren">
-                            <img src="/imgs/duongsat.jpg" alt="" width="455px" height="285px">
+                            <img src="<%= noiDungChinh[0].image_url %>" alt="" width="455px" height="285px">
                             <div class="middle-right">
-                                <p class="title">Bộ Chính trị: Đầu tư đường sắt đô thị, tàu điện ngầm tại Hà Nội, TP.HCM </p>
-                                <p class="desc">Bộ Chính trị lưu ý ưu tiên nguồn lực đầu tư hoàn thành tuyến đường bộ cao tốc Bắc - Nam phía Đông, đường sắt tốc độ cao Bắc - Nam, các...</p>
+                                <!-- <p class="title">Bộ Chính trị: Đầu tư đường sắt đô thị, tàu điện ngầm tại Hà Nội, TP.HCM </p> -->
+                                <p class="title"><%=noiDungChinh[0].TieuDe ? noiDungChinh[0].TieuDe : '' %></p>
+                                <p class="desc"><%=noiDungChinh[0].NoiDung ? noiDungChinh[0].NoiDung : '' %></p>
+                                <!-- <p class="desc">Bộ Chính trị lưu ý ưu tiên nguồn lực đầu tư hoàn thành tuyến đường bộ cao tốc Bắc - Nam phía Đông, đường sắt tốc độ cao Bắc - Nam, các...</p> -->
                             </div>
                         </div>
                         <div class="middle-duoi">
                             <ul class="list-item">
-                                <li class="item">
+                                <% noiDungPhu.forEach((noidungs) => { %>
+                                    <li class="item">
+                                        <img src="<%= noidungs.image_url %>" alt="" width="217px" height="135px">
+                                        <p><%= noidungs.TieuDe %></p>
+                                    </li>
+                                <% }); %>                                
+                                <!-- <li class="item">
                                     <img src="/imgs/nutgiaothong.jpg" alt="" width="217px" height="135px">
                                     <p>TP.HCM đề xuất mở thêm nhiều nút giao nối 6 cao tốc và 2 vành đai</p>
                                 </li>
@@ -111,7 +131,7 @@
                                 <li class="item">
                                     <img src="/imgs/dangconghoa.jpg" alt="" width="217px" height="135px">
                                     <p>Chủ tịch ủy ban của Đảng Cộng hòa từ chức do sức ép từ ông Trump</p>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
